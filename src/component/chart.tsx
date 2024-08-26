@@ -23,6 +23,8 @@ import { pakoFunc } from "../experiment/pako-func";
 import { bsonFunc } from "../experiment/bson-func";
 import { compressJSONFunc } from "../experiment/compress-json-func";
 import { lzStringFunc } from "../experiment/lz-string-func";
+import { differentialPakoFunc } from "../experiment/differential-pako-func";
+import { stringifyFunc } from "../experiment/stringify-func";
 
 ChartJS.register(
   LineElement,
@@ -43,6 +45,8 @@ const liteFuncArr: funcElementType[] = [
   { name: "diffential", fn: differentialFunc },
   { name: "msgpack", fn: msgpackFunc },
   { name: "cbor-X", fn: cborXFunc },
+  { name: "diffential + func", fn: differentialPakoFunc },
+  { name: "JSON.stringify", fn: stringifyFunc },
 ];
 
 const heavyFuncArr: funcElementType[] = [
@@ -56,16 +60,18 @@ const heavyFuncArr: funcElementType[] = [
 
 export const ChartContainer = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const curFuncArr = isChecked
-    ? [...heavyFuncArr]
-    : [...liteFuncArr];
-    console.log(isChecked,curFuncArr);
+  const curFuncArr = isChecked ? [...heavyFuncArr] : [...liteFuncArr];
+  console.log(isChecked, curFuncArr);
   return (
     <>
       <h1>종합 결과</h1>
       <h2>시간 (반복 JSON)</h2>
-      <p style={{fontWeight:"bold",color:"#420505"}}>⚠️ 이것은 당신의 브라우저를 망가뜨릴 수 있습니다.</p>
-      <p style={{fontSize:"0.75rem",opacity:0.75}}>비교를 위해 default & differential이 포함됩니다.</p>
+      <p style={{ fontWeight: "bold", color: "#420505" }}>
+        ⚠️ 이것은 당신의 브라우저를 망가뜨릴 수 있습니다.
+      </p>
+      <p style={{ fontSize: "0.75rem", opacity: 0.75 }}>
+        비교를 위해 default & differential이 포함됩니다.
+      </p>
       <label htmlFor="check" className="click-able">
         <input
           type="checkbox"

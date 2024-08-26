@@ -1,11 +1,10 @@
 const differentialObject = (prev: unknown, next: unknown): unknown => {
   if (typeof prev !== "object" || prev === null) {
-    return next;
+    return prev === next ? undefined : next;
   }
 
   if (Array.isArray(prev) && Array.isArray(next)) {
-    return next.slice(prev.length); // next는 prev의 원소를 모두 앞에 포함
-    // 즉 [1,2,3]이라면 [2,2,4]인 경우는 존재하지 않음
+    return next.slice(prev.length);
   }
 
   // 객체일 경우 객체의 차이를 반환

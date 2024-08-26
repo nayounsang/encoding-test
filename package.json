@@ -1,5 +1,6 @@
 {
   "name": "encoding-test",
+  "homepage": "https://nayounsang.github.io/encoding-test/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@msgpack/msgpack": "^3.0.0-beta2",

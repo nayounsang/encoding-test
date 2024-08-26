@@ -104,7 +104,8 @@ const EachChart = ({
 }: {
   title: string;
   yTitle: string;
-  callback: (fn: () => void | unknown[]) => number[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  callback: (fn: () => any) => number[];
   arr?: unknown[][];
   funcArr: funcElementType[];
 }) => {

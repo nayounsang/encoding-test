@@ -4,7 +4,8 @@ const differentialObject = (prev: unknown, next: unknown): unknown => {
   }
 
   if (Array.isArray(prev) && Array.isArray(next)) {
-    return next.slice(prev.length);
+    const arr = next.slice(prev.length);
+    return arr.length === 0 ? undefined : next;
   }
 
   // 객체일 경우 객체의 차이를 반환

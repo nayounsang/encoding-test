@@ -61,7 +61,6 @@ const heavyFuncArr: funcElementType[] = [
 export const ChartContainer = () => {
   const [isChecked, setIsChecked] = useState(false);
   const curFuncArr = isChecked ? [...heavyFuncArr] : [...liteFuncArr];
-  console.log(isChecked, curFuncArr);
   return (
     <>
       <h1>종합 결과</h1>

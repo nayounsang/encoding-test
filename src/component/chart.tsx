@@ -46,6 +46,7 @@ const liteFuncArr: funcElementType[] = [
 ];
 
 const heavyFuncArr: funcElementType[] = [
+  { name: "default", fn: defaultFunc },
   { name: "diffential", fn: differentialFunc },
   { name: "pako", fn: pakoFunc }, // to slow
   { name: "bson", fn: bsonFunc }, // to slow
@@ -64,7 +65,7 @@ export const ChartContainer = () => {
       <h1>종합 결과</h1>
       <h2>시간 (반복 JSON)</h2>
       <p style={{fontWeight:"bold",color:"#420505"}}>⚠️ 이것은 당신의 브라우저를 망가뜨릴 수 있습니다.</p>
-      <p style={{fontSize:"0.75rem",opacity:0.75}}>비교를 위해 differential이 포함됩니다.</p>
+      <p style={{fontSize:"0.75rem",opacity:0.75}}>비교를 위해 default & differential이 포함됩니다.</p>
       <label htmlFor="check" className="click-able">
         <input
           type="checkbox"

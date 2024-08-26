@@ -35,5 +35,8 @@ const differentialObject = (prev: unknown, next: unknown): unknown => {
 };
 
 export const differentialFunc = (arr: unknown[][]) => {
-  return arr.map((e) => differentialObject(e[0], e[1]));
+  return arr.map((e) => {
+    const result = differentialObject(e[0], e[1]);
+    return result === undefined ? {} : result;
+  });
 };

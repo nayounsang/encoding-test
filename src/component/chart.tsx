@@ -45,7 +45,6 @@ const liteFuncArr: funcElementType[] = [
   { name: "diffential", fn: differentialFunc },
   { name: "msgpack", fn: msgpackFunc },
   { name: "cbor-X", fn: cborXFunc },
-  { name: "diffential + func", fn: differentialPakoFunc },
   { name: "JSON.stringify", fn: stringifyFunc },
 ];
 
@@ -56,6 +55,7 @@ const heavyFuncArr: funcElementType[] = [
   { name: "bson", fn: bsonFunc }, // to slow
   { name: "compress-JSON", fn: compressJSONFunc }, // so silly
   { name: "lz-string", fn: lzStringFunc },
+  { name: "diffential + pako", fn: differentialPakoFunc },
 ];
 
 export const ChartContainer = () => {

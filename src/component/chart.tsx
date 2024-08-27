@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { defaultFunc } from "../experiment/default-func";
 import { differentialFunc } from "../experiment/differential-func";
 import { msgpackFunc } from "../experiment/msgpack-func";
@@ -14,10 +14,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { DATA_REPEAT } from "../const/const";
 import { getRepeatTime } from "../util/get-time";
-import originalData from "../data.json";
-import { repeatArray } from "../util/repeat-array";
 import { getByteSize } from "../util/get-byte-size";
 import { pakoFunc } from "../experiment/pako-func";
 import { bsonFunc } from "../experiment/bson-func";
@@ -25,6 +22,7 @@ import { compressJSONFunc } from "../experiment/compress-json-func";
 import { lzStringFunc } from "../experiment/lz-string-func";
 import { differentialPakoFunc } from "../experiment/differential-pako-func";
 import { stringifyFunc } from "../experiment/stringify-func";
+import { JsonContext } from "../app";
 
 ChartJS.register(
   LineElement,
@@ -35,8 +33,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-const repeatedArray = repeatArray(Object.values(originalData), DATA_REPEAT);
 
 type funcElementType = { name: string; fn: (arr: unknown[][]) => void };
 
@@ -61,6 +57,10 @@ const heavyFuncArr: funcElementType[] = [
 export const ChartContainer = () => {
   const [isChecked, setIsChecked] = useState(false);
   const curFuncArr = isChecked ? [...heavyFuncArr] : [...liteFuncArr];
+  const {original:originalData,repeated:repeatedArr} = useContext(JsonContext)
+  if (originalData === null || repeatedArr === null) {
+    return <h1>데이터 불러오는 중 ...</h1>
+  }
   return (
     <>
       <h1>종합 결과</h1>
@@ -88,6 +88,7 @@ export const ChartContainer = () => {
         yTitle="시간 (ms)"
         callback={getRepeatTime}
         funcArr={curFuncArr}
+        arr={repeatedArr}
       />
       <h2>용량 (원본 JSON)</h2>
       <EachChart
@@ -105,14 +106,14 @@ const EachChart = ({
   title,
   yTitle,
   callback,
-  arr = repeatedArray,
+  arr,
   funcArr,
 }: {
   title: string;
   yTitle: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   callback: (fn: () => any) => number[];
-  arr?: unknown[][];
+  arr: unknown[][];
   funcArr: funcElementType[];
 }) => {
   const [isLoading, setIsLoading] = useState(false);

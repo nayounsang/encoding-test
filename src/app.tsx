@@ -109,12 +109,12 @@ function App() {
         UTF-8인코딩해 바이트 측정
       </p>
       <Accordion title="변수 목록">
-        <h3>통제 변수 (default)</h3>
-        <p>두 인덱스 중 하나 그대로 리턴</p>
+        <h3 className="highlight">기본값 (통제 변수)</h3>
+        <p>원본데이터 두 인덱스 중 하나 그대로 리턴</p>
+        <h3 className="highlight">자체 제작 (differential)</h3>
+        <p>두 인덱스를 비교하고 파싱해 변화값 리턴</p>
         <h3>JSON.stringify</h3>
         <p>JSON을 문자열 변환한 시간(일부 테스트케이스는 해당 과정이 필수)</p>
-        <h3>미분 (differential)</h3>
-        <p>두 인덱스를 비교해 변화값 리턴</p>
         <h3>msgpack 인코딩</h3>
         <p>msgpack을 이용한 바이너리 인코딩</p>
         <h3>BSON 인코딩</h3>

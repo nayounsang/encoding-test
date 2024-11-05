@@ -37,16 +37,16 @@ ChartJS.register(
 type funcElementType = { name: string; fn: (arr: unknown[][]) => void };
 
 const liteFuncArr: funcElementType[] = [
-  { name: "default", fn: defaultFunc },
-  { name: "diffential", fn: differentialFunc },
+  { name: "기본값", fn: defaultFunc },
+  { name: "자체 제작", fn: differentialFunc },
   { name: "msgpack", fn: msgpackFunc },
   { name: "cbor-X", fn: cborXFunc },
   { name: "JSON.stringify", fn: stringifyFunc },
 ];
 
 const heavyFuncArr: funcElementType[] = [
-  { name: "default", fn: defaultFunc },
-  { name: "diffential", fn: differentialFunc },
+  { name: "기본값", fn: defaultFunc },
+  { name: "자체 제작", fn: differentialFunc },
   { name: "pako", fn: pakoFunc }, // to slow
   { name: "bson", fn: bsonFunc }, // to slow
   { name: "compress-JSON", fn: compressJSONFunc }, // so silly
